@@ -25,7 +25,7 @@ When running a headless media server accessed remotely over **Tailscale** via mo
 | Component | Installed Path |
 | :--- | :--- |
 | **Monitoring Script** | `~/Scripts/arr_monitor.sh` (`/Users/YOUR_USERNAME/Scripts/arr_monitor.sh`)
-| **`launchd` Agent Plist** | `~/Library/LaunchAgents/com.user.arrmonitor.plist`[span_23]
+| **`launchd` Agent Plist** | `~/Library/LaunchAgents/com.user.arrmonitor.plist`
 | **Standard Output Log** | `/tmp/arrmonitor.log`
 | **Error Log** | `/tmp/arrmonitor.err`
 
@@ -38,7 +38,7 @@ When running a headless media server accessed remotely over **Tailscale** via mo
 | **Sonarr** | `8989` | `http://127.0.0.1:8989/` | `200`, `301`, `302`, `401`
 | **Radarr** | `7878` | `http://127.0.0.1:7878/` | `200`, `301`, `302`, `401`
 | **Prowlarr** | `9696` | `http://127.0.0.1:9696/` | `200`, `301`, `302`, `401`
-| **Transmission** | `9091` | `http://127.0.0.1:9091/` | `200`, `301`, `302`, `401`[span_29]
+| **Transmission** | `9091` | `http://127.0.0.1:9091/` | `200`, `301`, `302`, `401`
 
 ---
 
@@ -88,7 +88,7 @@ for i in "${!APPS[@]}"; do
         send_notification "$APP_NAME" "Web server hung (Status: $HTTP_STATUS). Force-restarted."
     fi
 done
-```[span_30](start_span)[span_30](end_span)
+
 
 ### 2. `~/Library/LaunchAgents/com.user.arrmonitor.plist`
 
