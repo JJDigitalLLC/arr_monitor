@@ -1,13 +1,13 @@
 
 # Technical Documentation & Operations Guide (`USAGE.md`)
 
-This guide covers day-to-day testing, failure simulation, desktop notification verification, log inspection, `launchd` service management, and headless server uptime practices for **`arr_monitor`**[span_4](start_span)[span_4](end_span)[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span)[span_7](start_span)[span_7](end_span).
+This guide covers day-to-day testing, failure simulation, desktop notification verification, log inspection, `launchd` service management, and headless server uptime practices for **`arr_monitor`**
 
 ---
 
 ## 1. Manual Testing
 
-Execute the monitoring script directly in Terminal at any time to perform an immediate health sweep across **Sonarr**, **Radarr**, **Prowlarr**, and **Transmission**[span_8](start_span)[span_8](end_span):
+Execute the monitoring script directly in Terminal at any time to perform an immediate health sweep across **Sonarr**, **Radarr**, **Prowlarr**, and **Transmission**:
 
 ```bash
 ~/Scripts/arr_monitor.sh

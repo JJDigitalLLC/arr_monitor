@@ -1,22 +1,22 @@
 # macOS *arr & Transmission Health Monitor (`arr_monitor`)
 
-A lightweight, self-healing monitoring daemon (`launchd` + Bash) built for macOS (tested on Apple Silicon Mac mini M4) to continuously supervise **Sonarr**, **Radarr**, **Prowlarr**, and **Transmission**[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span).
+A lightweight, self-healing monitoring daemon (`launchd` + Bash) built for macOS (tested on Apple Silicon Mac mini M4) to continuously supervise **Sonarr**, **Radarr**, **Prowlarr**, and **Transmission**
 
 ## Overview
 
-When running a headless media server accessed remotely over **Tailscale** via mobile companion apps (**Helmarr** and **Ruddar**) or **Screens 5**, an application can still appear "running" in macOS Activity Monitor while its internal web server is completely hung[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span). When that happens, API connections drop and remote queue management stalls[span_9](start_span)[span_9](end_span)[span_10](start_span)[span_10](end_span).
+When running a headless media server accessed remotely over **Tailscale** via mobile companion apps (**Helmarr** and **Ruddar**) or **Screens 5**, an application can still appear "running" in macOS Activity Monitor while its internal web server is completely hung.When that happens, API connections drop and remote queue management stalls.
 
-`arr_monitor` solves this by combining **OS-level process checks** with **HTTP API responsiveness checks** (`curl` with a 5-second timeout), automatically force-quitting and relaunching hung services and sending native macOS desktop alerts[span_11](start_span)[span_11](end_span)[span_12](start_span)[span_12](end_span).
+`arr_monitor` solves this by combining **OS-level process checks** with **HTTP API responsiveness checks** (`curl` with a 5-second timeout), automatically force-quitting and relaunching hung services and sending native macOS desktop alerts
 
 ---
 
 ## Features
 
-- **Dual-Layer Health Detection:** Verifies both active process existence (`pgrep`) and HTTP server responsiveness (`curl --max-time 5`)[span_13](start_span)[span_13](end_span)[span_14](start_span)[span_14](end_span).
-- **Self-Healing Recovery:** Automatically terminates (`killall -9`) missing or hung instances and relaunches them cleanly (`open -a`)[span_15](start_span)[span_15](end_span)[span_16](start_span)[span_16](end_span).
-- **Native macOS Notifications:** Triggers desktop banner alerts via `osascript` whenever a service is restarted[span_17](start_span)[span_17](end_span)[span_18](start_span)[span_18](end_span).
-- **Native `launchd` Orchestration:** Runs silently in the background as a user `LaunchAgent` with immediate startup on login (`RunAtLoad`) and scheduled hourly checks (`StartInterval = 3600`)[span_19](start_span)[span_19](end_span)[span_20](start_span)[span_20](end_span).
-- **VPN & Tailscale Friendly:** Designed for headless setups running split-tunneled VPNs (e.g., ExpressVPN for Transmission) alongside Tailscale mesh access[span_21](start_span)[span_21](end_span).
+- **Dual-Layer Health Detection:** Verifies both active process existence (`pgrep`) and HTTP server responsiveness (`curl --max-time 5`)
+- **Self-Healing Recovery:** Automatically terminates (`killall -9`) missing or hung instances and relaunches them cleanly (`open -a`)
+- **Native macOS Notifications:** Triggers desktop banner alerts via `osascript` whenever a service is restarted.
+- **Native `launchd` Orchestration:** Runs silently in the background as a user `LaunchAgent` with immediate startup on login (`RunAtLoad`) and scheduled hourly checks (`StartInterval = 3600`).
+- **VPN & Tailscale Friendly:** Designed for headless setups running split-tunneled VPNs (e.g., ExpressVPN for Transmission) alongside Tailscale mesh access.
 
 ---
 
@@ -24,10 +24,10 @@ When running a headless media server accessed remotely over **Tailscale** via mo
 
 | Component | Installed Path |
 | :--- | :--- |
-| **Monitoring Script** | `~/Scripts/arr_monitor.sh` (`/Users/YOUR_USERNAME/Scripts/arr_monitor.sh`)[span_22](start_span)[span_22](end_span) |
-| **`launchd` Agent Plist** | `~/Library/LaunchAgents/com.user.arrmonitor.plist`[span_23](start_span)[span_23](end_span) |
-| **Standard Output Log** | `/tmp/arrmonitor.log`[span_24](start_span)[span_24](end_span) |
-| **Error Log** | `/tmp/arrmonitor.err`[span_25](start_span)[span_25](end_span) |
+| **Monitoring Script** | `~/Scripts/arr_monitor.sh` (`/Users/YOUR_USERNAME/Scripts/arr_monitor.sh`)
+| **`launchd` Agent Plist** | `~/Library/LaunchAgents/com.user.arrmonitor.plist`[span_23]
+| **Standard Output Log** | `/tmp/arrmonitor.log`
+| **Error Log** | `/tmp/arrmonitor.err`[span_25]
 
 ---
 
@@ -35,10 +35,10 @@ When running a headless media server accessed remotely over **Tailscale** via mo
 
 | Service | Port | Local Endpoint Checked | Healthy HTTP Codes |
 | :--- | :---: | :--- | :--- |
-| **Sonarr** | `8989` | `http://127.0.0.1:8989/` | `200`, `301`, `302`, `401`[span_26](start_span)[span_26](end_span) |
-| **Radarr** | `7878` | `http://127.0.0.1:7878/` | `200`, `301`, `302`, `401`[span_27](start_span)[span_27](end_span) |
-| **Prowlarr** | `9696` | `http://127.0.0.1:9696/` | `200`, `301`, `302`, `401`[span_28](start_span)[span_28](end_span) |
-| **Transmission** | `9091` | `http://127.0.0.1:9091/` | `200`, `301`, `302`, `401`[span_29](start_span)[span_29](end_span) |
+| **Sonarr** | `8989` | `http://127.0.0.1:8989/` | `200`, `301`, `302`, `401`
+| **Radarr** | `7878` | `http://127.0.0.1:7878/` | `200`, `301`, `302`, `401`
+| **Prowlarr** | `9696` | `http://127.0.0.1:9696/` | `200`, `301`, `302`, `401`
+| **Transmission** | `9091` | `http://127.0.0.1:9091/` | `200`, `301`, `302`, `401`[span_29]
 
 ---
 
