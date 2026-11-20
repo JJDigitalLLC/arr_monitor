@@ -27,7 +27,7 @@ When running a headless media server accessed remotely over **Tailscale** via mo
 | **Monitoring Script** | `~/Scripts/arr_monitor.sh` (`/Users/YOUR_USERNAME/Scripts/arr_monitor.sh`)
 | **`launchd` Agent Plist** | `~/Library/LaunchAgents/com.user.arrmonitor.plist`[span_23]
 | **Standard Output Log** | `/tmp/arrmonitor.log`
-| **Error Log** | `/tmp/arrmonitor.err`[span_25]
+| **Error Log** | `/tmp/arrmonitor.err`
 
 ---
 
